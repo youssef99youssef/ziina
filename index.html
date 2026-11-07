@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر زينة | محيط العينين 3 في 1 Viedermina Contour Yeux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c026d3;
+            --primary-hover: #a21caf;
+            --accent: #f59e0b;
+            --success: #16a34a;
+            --dark: #0f172a;
+            --light: #fdf4ff;
+            --border: #f0abfc;
+            --radius: 14px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #faf5ff;
+            color: var(--dark);
+            line-height: 1.6;
+            padding-bottom: 95px;
+        }
+
+        /* ترويسة متجر زينة */
+        .store-header {
+            background: #ffffff;
+            text-align: center;
+            padding: 14px 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border-bottom: 1px solid #f3e8ff;
+        }
+
+        .store-logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+        }
+
+        .store-logo span {
+            color: var(--primary);
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        /* شريط الإعلان */
+        .top-bar {
+            background: linear-gradient(90deg, #c026d3, #db2777);
+            color: #fff;
+            text-align: center;
+            padding: 9px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        /* معرض الوسائط (فيديو + صور) */
+        .media-showcase {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .media-showcase {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+        }
+
+        .video-box {
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: #000;
+            border: 1px solid #f3e8ff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 125%;
+            height: 0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* معرض الصور المصغرة والأساسية */
+        .gallery-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .main-img-box {
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: #ffffff;
+            border: 1px solid #f3e8ff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            height: 330px;
+        }
+
+        .main-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .thumbnails-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .thumb {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
+            background: #fff;
+            height: 80px;
+            transition: all 0.2s ease;
+        }
+
+        .thumb.active, .thumb:hover {
+            border-color: var(--primary);
+            transform: scale(0.97);
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* بطاقة المحتوى والوصف */
+        .card {
+            background: #ffffff;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; color: var(--dark); }
+        h3 { font-size: 1.15rem; margin-top: 15px; font-weight: 700; color: #475569; }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-right: 28px;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        ul li span.icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        /* القسم الفرنسي */
+        .lang-fr {
+            direction: ltr;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed #e2e8f0;
+        }
+
+        .lang-fr ul li {
+            padding-right: 0;
+            padding-left: 28px;
+        }
+
+        .lang-fr ul li span.icon {
+            right: auto;
+            left: 0;
+        }
+
+        /* صندوق الطلب */
+        .order-card {
+            border: 2px solid var(--primary);
+            background: #ffffff;
+            scroll-margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            background: #fff;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* عروض الكمية */
+        .offers-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 15px 0 20px 0;
+        }
+
+        .offer-card {
+            position: relative;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #fdf4ff;
+        }
+
+        .offer-card:hover {
+            border-color: #d946ef;
+        }
+
+        .offer-card.active {
+            border-color: var(--primary);
+            background: #fae8ff;
+            box-shadow: 0 4px 12px rgba(192, 38, 211, 0.15);
+        }
+
+        .offer-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .offer-radio {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .offer-title {
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--dark);
+        }
+
+        .offer-badge {
+            display: inline-block;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-right: 6px;
+        }
+
+        .offer-badge.best {
+            background: #16a34a;
+        }
+
+        .offer-pricing {
+            text-align: left;
+            direction: ltr;
+        }
+
+        .price-final {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+
+        .price-old {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+            margin-left: 6px;
+        }
+
+        /* ملخص الحساب التلقائي */
+        .price-summary-box {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            color: #475569;
+        }
+
+        .summary-row.total-row {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .summary-row.total-row .highlight-price {
+            color: var(--success);
+            font-size: 1.35rem;
+        }
+
+        .discount-highlight {
+            color: #ef4444;
+            font-weight: 700;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.35);
+            transition: transform 0.1s, background-color 0.2s;
+        }
+
+        .btn-submit:active { transform: scale(0.98); }
+        .btn-submit:hover { background: #15803d; }
+
+        .trust-badges {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        /* زر الطلب المتنقل */
+        .floating-order-wrapper {
+            position: fixed;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            padding: 0 16px;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .floating-order-btn {
+            pointer-events: auto;
+            width: 100%;
+            max-width: 480px;
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 8px 25px rgba(22, 163, 74, 0.45);
+            animation: pulse-animation 2s infinite;
+            border: 2px solid #ffffff;
+            transition: transform 0.2s ease;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.65); }
+            70% { box-shadow: 0 0 0 12px rgba(22, 163, 74, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ترويسة متجر زينة -->
+    <header class="store-header">
+        <div class="store-logo">زينة <span>ZEINA</span></div>
+    </header>
+
+    <!-- شريط الإعلان -->
+    <div class="top-bar">
+        ✨ عناية استثنائية من متجر زينة + التوصيل متوفر والدفع بعد الاستلام ✨
+    </div>
+
+    <div class="container">
+        
+        <!-- استعراض الفيديو والصور (Media Showcase) -->
+        <div class="media-showcase">
+            <!-- فيديو المنتج التطبيقي -->
+            <div class="video-box">
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://iframe.videodelivery.net/3644770770db5b78bc5bc0e8d54a928a?autoplay=true&loop=true&muted=true" 
+                        allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" 
+                        allowfullscreen="true">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- صور المنتج مع إمكانية التبديل بالنقر -->
+            <div class="gallery-box">
+                <div class="main-img-box">
+                    <img id="mainDisplayImage" src="https://mowarid.ma/api/media/1785042441189-shopify-migration-e454addc-contour-yeux-3-en-1-tonicit-vi-0.jpg" alt="Viedermina Contour Yeux">
+                </div>
+                <div class="thumbnails-row">
+                    <div class="thumb active" onclick="switchImage('https://mowarid.ma/api/media/1785042441189-shopify-migration-e454addc-contour-yeux-3-en-1-tonicit-vi-0.jpg', this)">
+                        <img src="https://mowarid.ma/api/media/1785042441189-shopify-migration-e454addc-contour-yeux-3-en-1-tonicit-vi-0.jpg" alt="صورة 1">
+                    </div>
+                    <div class="thumb" onclick="switchImage('https://mowarid.ma/api/media/1785436762568-202102_d2403231-a7a8-402d-979f-952be9aec8af.jpg', this)">
+                        <img src="https://mowarid.ma/api/media/1785436762568-202102_d2403231-a7a8-402d-979f-952be9aec8af.jpg" alt="صورة 2">
+                    </div>
+                    <div class="thumb" onclick="switchImage('https://mowarid.ma/api/media/1785437183264-hf_20260718_202102_b2ae455e-8ced-4166-81f4-d28f6786d95b.jpg', this)">
+                        <img src="https://mowarid.ma/api/media/1785437183264-hf_20260718_202102_b2ae455e-8ced-4166-81f4-d28f6786d95b.jpg" alt="صورة 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- تفاصيل المنتج (العربية والفرنسية) -->
+        <div class="card">
+            <!-- العربية -->
+            <div dir="rtl">
+                <h2>نظرة شابة، مضيئة ومفعمة بالحيوية</h2>
+                <p>اكتشفي <strong>محيط العينين 3 في 1 Viedermina Contour Yeux</strong> — عناية فائقة الفعالية صُممت لتعالج في وقت واحد العلامات الثلاث الرئيسية لإرهاق النظرة: التجاعيد، الهالات السوداء والانتفاخات.</p>
+                <p>مزود بـ <strong>كرة تطبيق تدليك (applicateur bille)</strong> تمنحك إحساساً منعشاً ومخففاً للضغط يقلل تورم محيط العينين فوراً.</p>
+                
+                <h3>الفوائد والمميزات الرئيسية</h3>
+                <ul>
+                    <li><span class="icon">✨</span> <strong>مقاوم علامات الشيخوخة:</strong> يقلل التجاعيد والخطوط الدقيقة حول العينين بوضوح.</li>
+                    <li><span class="icon">👁️</span> <strong>مخفف الهالات السوداء:</strong> يخفف ظلال الهالات ويضيء النظرة.</li>
+                    <li><span class="icon">💧</span> <strong>مقاوم الانتفاخات:</strong> يخفف التورم ويزيد من شد المنطقة.</li>
+                </ul>
+
+                <h3>المكونات الفعالة</h3>
+                <ul>
+                    <li><span class="icon">🔬</span> <strong>Syn®-eye:</strong> عنصر فعال قوي مقاوم للتجاعيد ينعم ويملأ البشرة.</li>
+                    <li><span class="icon">✨</span> <strong>كولاجين (Collagène):</strong> يشد المنطقة ويعيد المرونة للبشرة.</li>
+                    <li><span class="icon">💧</span> <strong>تريو ببتيد (TrioPeptide):</strong> مفعول ثلاثي ضد الشيخوخة لنتائج ملموسة ودائمة.</li>
+                </ul>
+                <p>تركيبة بـ <strong>ثلاثية المفعول ضد علامات الشيخوخة</strong>. سعة <span dir="ltr">15ml / 0.5 Fl.Oz</span>.</p>
+            </div>
+
+            <!-- الفرنسية -->
+            <div class="lang-fr">
+                <h2>Un Regard Jeune, Lumineux et Revitalisé</h2>
+                <p>Découvrez le <strong>Contour Yeux 3 en 1 Viedermina</strong> — un soin haute performance conçu pour traiter simultanément les trois principaux signes de fatigue du regard : les rides, les cernes et les poches.</p>
+                <p>Doté d’un <strong>applicateur bille massant</strong>, il offre une application fraiche et délassante qui dégonfle et revitalise instantanément la zone du contour des yeux.</p>
+                
+                <h3>Bienfaits clés</h3>
+                <ul>
+                    <li><span class="icon">✨</span> <strong>Anti-âge :</strong> Réduit visiblement les rides et ridules autour des yeux</li>
+                    <li><span class="icon">👁️</span> <strong>Anti-cernes :</strong> Atténue les cernes et illumine le regard</li>
+                    <li><span class="icon">💧</span> <strong>Anti-poches :</strong> Dégonfle et raffermit la zone des yeux</li>
+                </ul>
+
+                <h3>Ingrédients actifs</h3>
+                <ul>
+                    <li><span class="icon">🔬</span> <strong>Syn®-eye :</strong> Puissant actif anti-rides qui lisse et repulpe la peau</li>
+                    <li><span class="icon">✨</span> <strong>Collagène :</strong> Raffermit et redonne élasticité à la peau</li>
+                    <li><span class="icon">💧</span> <strong>TrioPeptide :</strong> Triple action anti-âge pour un résultat visible et durable</li>
+                </ul>
+                <p>Formule à <strong>triple action anti-âge</strong>. 15ml / 0.5 Fl.Oz.</p>
+            </div>
+        </div>
+
+        <!-- استمارة الطلب -->
+        <div class="card order-card" id="order-section">
+            <h2 style="text-align: center; color: var(--primary);">استمارة الطلب السريع - متجر زينة</h2>
+            <p style="text-align: center; font-size: 0.9rem; margin-bottom: 16px;">املئي بياناتك الآن واستفيدي من تخفيضات اليوم قبل نفاد الكمية</p>
+
+            <form id="checkoutForm" onsubmit="sendOrder(event)">
+                
+                <label style="font-weight: 800; display: block; margin-bottom: 8px;">اختاري العرض المناسب لكِ:</label>
+                <div class="offers-container">
+                    
+                    <!-- عرض 1 عبوة -->
+                    <label class="offer-card" id="card-1" onclick="selectOffer(1, 100, 0)">
+                        <div class="offer-left">
+                            <input type="radio" name="offerRadio" class="offer-radio" value="1">
+                            <div>
+                                <span class="offer-title">عبوة واحدة (1)</span>
+                            </div>
+                        </div>
+                        <div class="offer-pricing">
+                            <span class="price-final">100 درهم</span>
+                        </div>
+                    </label>
+
+                    <!-- عرض عبوتان (خصم 10%) -->
+                    <label class="offer-card active" id="card-2" onclick="selectOffer(2, 180, 10)">
+                        <div class="offer-left">
+                            <input type="radio" name="offerRadio" class="offer-radio" value="2" checked>
+                            <div>
+                                <span class="offer-title">عبوتان (2)</span>
+                                <span class="offer-badge best">خصم 10% - الأكثر طلباً</span>
+                            </div>
+                        </div>
+                        <div class="offer-pricing">
+                            <span class="price-final">180 درهم</span>
+                            <span class="price-old">200 DH</span>
+                        </div>
+                    </label>
+
+                    <!-- عرض 3 عبوات (خصم 20%) -->
+                    <label class="offer-card" id="card-3" onclick="selectOffer(3, 240, 20)">
+                        <div class="offer-left">
+                            <input type="radio" name="offerRadio" class="offer-radio" value="3">
+                            <div>
+                                <span class="offer-title">3 عبوات (3)</span>
+                                <span class="offer-badge">خصم 20%</span>
+                            </div>
+                        </div>
+                        <div class="offer-pricing">
+                            <span class="price-final">240 درهم</span>
+                            <span class="price-old">300 DH</span>
+                        </div>
+                    </label>
+
+                </div>
+
+                <!-- جدول الحسابات التلقائي -->
+                <div class="price-summary-box">
+                    <div class="summary-row">
+                        <span>السعر الإجمالي:</span>
+                        <span id="subtotalDisplay">200 درهم</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>الخصم المطبق:</span>
+                        <span id="discountDisplay" class="discount-highlight">-20 درهم (خصم 10%)</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>المجموع الصافي للدفع:</span>
+                        <span id="finalDisplay" class="highlight-price">180 درهم</span>
+                    </div>
+                </div>
+
+                <!-- معلومات الزبون -->
+                <div class="form-group">
+                    <label for="name">الاسم الكامل:</label>
+                    <input type="text" id="name" class="form-control" placeholder="مثال: نوال الفاسي" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف (للتواصل والتوصيل):</label>
+                    <input type="tel" id="phone" class="form-control" dir="ltr" placeholder="06XXXXXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">المدينة والعنوان:</label>
+                    <input type="text" id="city" class="form-control" placeholder="اسم المدينة والحي أو العنوان" required>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    🛒 اضغطي هنا لتأكيد طلبك الآن
+                </button>
+            </form>
+
+            <div class="trust-badges">
+                <span>🚚 توصيل سريع لجميع المدن</span>
+                <span>💵 الدفع عند الاستلام</span>
+                <span>💯 منتج أصلي ومضمون</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- زر الطلب المتنقل -->
+    <div class="floating-order-wrapper">
+        <a href="#order-section" class="floating-order-btn">
+            <span>🛒 اضغطي هنا للطلب من متجر زينة</span>
+        </a>
+    </div>
+
+    <!-- السكربت البرمجي -->
+    <script>
+        // رقم الواتساب المخصص لمتجر زينة
+        const STORE_PHONE_NUMBER = "212644733932";
+        const BASE_UNIT_PRICE = 100;
+
+        let currentQuantity = 2;
+        let currentFinalPrice = 180;
+        let currentDiscountPercent = 10;
+
+        // تبديل الصور في المعرض
+        function switchImage(src, element) {
+            document.getElementById('mainDisplayImage').src = src;
+            document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // اختيار العرض وتحديث الفاتورة
+        function selectOffer(qty, finalPrice, discountPercent) {
+            currentQuantity = qty;
+            currentFinalPrice = finalPrice;
+            currentDiscountPercent = discountPercent;
+
+            document.querySelectorAll('.offer-card').forEach(card => card.classList.remove('active'));
+            document.getElementById(`card-${qty}`).classList.add('active');
+            document.getElementById(`card-${qty}`).querySelector('input[type="radio"]').checked = true;
+
+            const subtotal = qty * BASE_UNIT_PRICE;
+            const discountAmount = subtotal - finalPrice;
+
+            document.getElementById('subtotalDisplay').innerText = `${subtotal} درهم`;
+            
+            if (discountAmount > 0) {
+                document.getElementById('discountDisplay').innerText = `-${discountAmount} درهم (خصم ${discountPercent}%)`;
+            } else {
+                document.getElementById('discountDisplay').innerText = `لا يوجد خصم (0 درهم)`;
+            }
+
+            document.getElementById('finalDisplay').innerText = `${finalPrice} درهم`;
+        }
+
+        // إرسال الطلب عبر الواتساب
+        function sendOrder(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const customerPhone = document.getElementById('phone').value;
+            const city = document.getElementById('city').value;
+            const subtotal = currentQuantity * BASE_UNIT_PRICE;
+            const discountAmount = subtotal - currentFinalPrice;
+
+            const message = `🌸 *طلب جديد من متجر زينة (Zeina)* 🌸%0A` +
+                            `------------------------------%0A` +
+                            `👤 *الاسم:* ${encodeURIComponent(name)}%0A` +
+                            `📱 *رقم الزبون:* ${encodeURIComponent(customerPhone)}%0A` +
+                            `📍 *المدينة والعنوان:* ${encodeURIComponent(city)}%0A` +
+                            `👁️ *المنتج:* محيط العينين 3 في 1 Viedermina Contour Yeux%0A` +
+                            `📦 *الكمية المطلوبة:* ${currentQuantity} عبوات%0A` +
+                            `💰 *السعر الأصلي:* ${subtotal} درهم%0A` +
+                            `🎁 *الخصم:* ${discountAmount} درهم (${currentDiscountPercent}%%)%0A` +
+                            `💵 *المجموع الصافي للدفع:* *${currentFinalPrice} درهم*%0A` +
+                            `------------------------------%0A` +
+                            `المرجو مراجعة وتأكيد الطلبية للشحن.`;
+
+            const whatsappUrl = `https://wa.me/${STORE_PHONE_NUMBER}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
